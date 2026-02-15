@@ -12,7 +12,7 @@ connectDb();
 
 app.use(bodyParser.json());
 app.use('/user', userAuthRouter);
-//app.use('/user/transactions', transactionRouter);
+app.use('/user/transactions', transactionRouter);
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {

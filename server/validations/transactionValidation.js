@@ -1,6 +1,7 @@
 const {z} = require("zod");
 
-const { categories } = require("../models/transactionModel");
+const {categories} = require("../models/transactionModel.js");
+//console.log(categories);
 
 const transactionSchema = z.object({
     userId: z.string().min(4).max(10),
@@ -8,7 +9,7 @@ const transactionSchema = z.object({
     amount: z.number().positive(),
     category: z.enum(categories),
     date: z.coerce.date(),
-    notes: z.optional()
+    notes: z.string().optional()
 })
 
 module.exports = transactionSchema;
