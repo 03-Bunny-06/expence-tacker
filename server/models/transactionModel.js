@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+const categories = ["Food", "Transport", "Rent", "Utilities", "Entertainment", "Shopping", "Income", "Miscellaneous","Other"]
 const transactionSchema = new mongoose.Schema({
     userId: {
         type: String,
@@ -15,7 +16,7 @@ const transactionSchema = new mongoose.Schema({
     },
     category: {
         type: String,
-        enum: ["Food", "Transport", "Rent", "Utilities", "Entertainment", "Shopping", "Income", "Miscellaneous","Other"],
+        enum: categories,
         required: true,
         default: "Other"
     },
@@ -33,4 +34,4 @@ const transactionSchema = new mongoose.Schema({
 
 const Transaction = mongoose.model('Transaction', transactionSchema);
 
-module.exports = Transaction;
+module.exports = {Transaction, categories};
