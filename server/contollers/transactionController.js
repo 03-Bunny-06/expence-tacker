@@ -85,4 +85,39 @@ const editExistingTransaction = async(req, res) => {
     }
 }
 
-module.exports = {createNewTransaction, editExistingTransaction};
+const deleteTransaction = async(req, res) => {
+    const id = req.params.id;
+
+    const isValidTransactionId = mongoose.isValidObjectId(id);
+
+    if(!isValidTransactionId){
+        return res.status(404).json({
+            msg: "Invalid transaction ID!"
+        })
+    }
+    try{
+        const transactionExists = await Transaction.findById(id);
+        if(!transactionExists){
+            return res.status(404).json({
+                msg: "Transaction does not exist!"
+            })
+        }
+
+        const deletedTransaction = await Transaction.findByIdAndDelete(id);
+        res.status(200).json({
+            msg: "Transaction deleted successfully!"
+        })
+    }
+    catch(e){
+        if (e.name === 'ZodError'){
+            return res.status(400).json({
+                error: e.message
+            })
+        }
+        res.status(500).json({
+            error: e.message
+        })  
+    }
+}
+
+module.exports = {createNewTransaction, editExistingTransaction, deleteTransaction};
