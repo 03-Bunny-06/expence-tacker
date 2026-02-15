@@ -1,4 +1,4 @@
-const {Transaction} = require("../models/transactionModel.js");
+const {Transaction, categories} = require("../models/transactionModel.js");
 const User = require("../models/userModel.js");
 const transactionSchema = require("../validations/transactionValidation.js");
 const mongoose = require("mongoose");
@@ -120,4 +120,79 @@ const deleteTransaction = async(req, res) => {
     }
 }
 
-module.exports = {createNewTransaction, editExistingTransaction, deleteTransaction};
+const getAllTransactions = async(req, res) => {    
+    try{
+        const email = req.email;
+        const userDetails = await User.findOne({email});
+
+        if (!userDetails){
+            return res.status(404).json({
+                msg: "User not found!"
+            })
+        }
+
+        const userId = userDetails.userId;
+
+        const {category, amount, date, page, limit} = req.query;
+
+        const hasFilters = !!(category || amount || date);
+
+        const hasPagination = !!(page || limit);
+
+        let pageNum, limitNum, totalTransactions, totalPages;
+
+        const filter = {userId}
+
+        if(categories.includes(category)){
+            filter.category = category;
+        }
+
+        if(amount > 0){
+            filter.amount = {$gte: Number(amount)}
+        }
+
+        if(date){
+            filter.date = {$gte: new Date(date)}
+        }
+
+        let query = Transaction.find(filter)
+
+        if(hasPagination){
+            pageNum = Math.max(1, Number(page));
+            limitNum = Math.max(5, Number(limit));
+
+            totalTransactions = await Transaction.countDocuments(filter);
+            totalPages = Math.ceil(totalTransactions/limitNum);
+
+            const skipNum = (pageNum - 1) * limitNum;
+            query = query.skip(skipNum).limit(limitNum);
+        }
+
+        const data = await query;
+
+        return res.status(200).json({
+            hasFilters: hasFilters,
+            hasPagination: hasPagination,
+            totalTransactions: totalTransactions,
+            ...(hasPagination && {
+                totalPages: totalPages,
+                currentPage: pageNum,
+                limitForPage: limitNum
+            }),
+            data: data
+        })
+
+    }
+    catch(e){
+        if (e.name === 'ZodError'){
+            return res.status(400).json({
+                error: e.message
+            })
+        }
+        res.status(500).json({
+            error: e.message
+        })
+    }
+}
+
+module.exports = {createNewTransaction, editExistingTransaction, deleteTransaction, getAllTransactions};

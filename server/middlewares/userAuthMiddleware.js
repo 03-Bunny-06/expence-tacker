@@ -25,6 +25,7 @@ const userMiddleware = async(req, res, next) => {
 
         const decodedEmail = payload.email;
         if(decodedEmail){
+            req.email = decodedEmail;
             next();
         }
         else{
