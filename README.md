@@ -1,6 +1,6 @@
 # Expense Tracker 💳
 
-A robust RESTful backend service for managing restaurant menus and orders. This API provides functionality for CRUD operations, searching, filtering, availability control, and status-tracked order handling.
+This is a RESTful backend API built with Node.js and Express.js that provides secure user management and transaction tracking for an expense-tracking application. It uses MongoDB for data storage, supports authenticated access, and provides flexible APIs for creating, reading, updating, and deleting user transaction data.
 
 The API is fully documented using OpenAPI (Swagger), providing an interactive way to explore and test the endpoints.
 
@@ -9,13 +9,12 @@ The API is fully documented using OpenAPI (Swagger), providing an interactive wa
 
 ## Features⚡
 
--   **Menu Management:** Full CRUD (Create, Read, Update, Delete) functionality for menu items.
--   **Order Handling:** Create new orders, retrieve order lists, view specific order details, and update order statuses.
--   **Advanced Search & Filtering:**
-    -   Filter menu items by `category`, `availability`, and `price`.
-    -   Perform text-based searches on menu item `name` and `ingredients`.
--   **Pagination:** Efficiently query large sets of order data using page and limit parameters.
--   **Availability Control:** Easily toggle the availability of any menu item.
+-   **Expense Management:** Full CRUD operations to add, edit, delete, and fetch user expenses with structured fields like title, amount, category, and date.
+-   **Secure User Authentication:** JWT-based authentication with password to ensure safe login and protected access to all transaction routes.
+-   **Advanced Filtering:**
+    -   Filter expenses by category, date, or amount range.
+-   **Pagination:** Efficiently load large sets of expense data using `page` and `limit` query parameters.
+-   **User-Scoped Data:** Each user only accesses their own expense records, enforced via JWT validation and user-bound queries.
 -   **API Documentation:** Interactive API documentation powered by Swagger (OpenAPI) is available at the `/api-docs` endpoint.
 
 ## Tech Stack 🚀
@@ -151,4 +150,4 @@ The API is structured into two main routes that handles: `User` and `Transaction
 | `PUT`  | `/user/transactions/edit/:id`               | Updates a transaction with ID.                               | User           |
 | `DELETE`   | `/user/transactions/delete/:id`           | Deletes a transaction with ID.          | User           |
 | `GET` | `/user/transactions`    | Fetches all transaction details with filtering & pagination.                    | User           |
-
+| `GET` | `/user/transactions/analytics`    | Fetches the analytical data.                    | User           |
