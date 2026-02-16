@@ -1,3 +1,4 @@
+const { date } = require("zod");
 const {Transaction, categories} = require("../models/transactionModel.js");
 const User = require("../models/userModel.js");
 const transactionSchema = require("../validations/transactionValidation.js");
@@ -195,4 +196,38 @@ const getAllTransactions = async(req, res) => {
     }
 }
 
-module.exports = {createNewTransaction, editExistingTransaction, deleteTransaction, getAllTransactions};
+const getTransactionAnalytics = async(req, res) => {
+    try{
+        const email = req.email;
+        const userDetails = await User.findOne({email});
+
+        if (!userDetails){
+            return res.status(404).json({
+                msg: "User not found!"
+            })
+        }
+        const userId = userDetails.userId; 
+
+        const filter = {userId};
+        
+        const lastFiveTransactions = await Transaction.find(filter).sort({date: -1}).limit(5);
+
+        return res.status(200).json({
+            msg: "Transaction Analytics",
+            lastFiveTransactions: lastFiveTransactions
+        })
+    }
+    catch(e){
+        if (e.name === 'ZodError'){
+            return res.status(400).json({
+                error: e.message
+            })
+        }
+        res.status(500).json({
+            error: e.message
+        })
+    }
+
+}
+
+module.exports = {createNewTransaction, editExistingTransaction, deleteTransaction, getAllTransactions, getTransactionAnalytics};
