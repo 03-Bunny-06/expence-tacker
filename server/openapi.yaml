@@ -1,0 +1,1150 @@
+openapi: 3.0.0
+info:
+  title: Expense Tracker API Documentation
+  version: 1.0.0
+  description: | 
+      A robust backend service designed to power an expense tracking application. It offers secure user authentication, comprehensive transaction management, and powerful API features like filtering and pagination.
+
+      🚀 **Key Features**: 
+        - **Secure Authentication:** User registration and login with password and JWT-based auth tokens.
+        - **Query Filters & Search:** Fetch transactions with optional filters (e.g., by date, category) and text search capabilities.
+        - **Transaction CRUD Operations:** Full Create, Read, Update, Delete operations for user expense/transaction records.
+        - **Pagination:** Efficient pagination support to load large transaction lists in pages (page & limit query params).
+      
+      🛠 **Tech Stack**: 
+        - **Node.js:** JavaScript runtime for server-side logic. 
+        - **Express.js:** Lightweight REST API framework handling routing and HTTP requests.
+        - **MongoDB & Mongoose:** NoSQL database and ODM for storage and schema modeling.
+        - **JWT & Swagger (OpenAPI):** JSON Web Tokens for secure sessions and Swagger for API documentation.
+  contact: 
+    name: Sai Kowshik 
+    email: saikowshik0306@gmail.com 
+    url: https://github.com/03-Bunny-06/expence-tacker.git
+servers:
+  - url: https://api-expence-tacker.onrender.com
+tags:
+  - name: Users
+  - name: Transactions
+  - name: Non-Existing Routes
+security: 
+  - UserAuth: []
+paths:
+  /user/register:
+    post:
+      tags:
+        - Users
+      summary: User Registeration
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example: ''
+      parameters:
+        - name: userId
+          in: header
+          schema:
+            type: string
+          example: USER001
+        - name: email
+          in: header
+          schema:
+            type: string
+          example: john.doe@example.com
+        - name: password
+          in: header
+          schema:
+            type: string
+          example: John@123
+      responses:
+        '201':
+          description: Created
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '36'
+            ETag:
+              schema:
+                type: string
+                example: W/"24-GS9ZkRlQWaaM0laoy5lry1MO7TU"
+            Date:
+              schema:
+                type: string
+                example: Sun, 15 Feb 2026 12:03:40 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: |-
+                {
+                    "msg": "User created successfully!"
+                }
+        '400':
+          description: Bad Request
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '346'
+            ETag:
+              schema:
+                type: string
+                example: W/"15a-J43OADirCbInRPBbWL2DFhFR3ok"
+            Date:
+              schema:
+                type: string
+                example: Sun, 15 Feb 2026 12:06:06 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: |-
+                {
+                    "error": "[\n  {\n    \"origin\": \"string\",\n    \"code\": \"invalid_format\",\n    \"format\": \"email\",\n    \"pattern\": \"/^(?!\\\\.)(?!.*\\\\.\\\\.)([A-Za-z0-9_'+\\\\-\\\\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\\\\-]*\\\\.)+[A-Za-z]{2,}$/\",\n    \"path\": [\n      \"email\"\n    ],\n    \"message\": \"Invalid email format\"\n  }\n]"
+                }
+        '409':
+          description: Conflict
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '79'
+            ETag:
+              schema:
+                type: string
+                example: W/"4f-zHNXuDk0r9ZbLZMZuT1BsDL7PIo"
+            Date:
+              schema:
+                type: string
+                example: Sun, 15 Feb 2026 12:05:31 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: |-
+                {
+                    "msg": "User already exists, Try Login (or) use a different userId and email!"
+                }
+  /user/login:
+    post:
+      tags:
+        - Users
+      summary: User Login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example: ''
+      parameters:
+        - name: email
+          in: header
+          schema:
+            type: string
+          example: john.doe@example.com
+        - name: password
+          in: header
+          schema:
+            type: string
+          example: John@123
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '200'
+            ETag:
+              schema:
+                type: string
+                example: W/"c8-AXA8cEHYoqkwXz8Q+3/RQ/S59oU"
+            Date:
+              schema:
+                type: string
+                example: Sun, 15 Feb 2026 17:22:48 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: |-
+                {
+                    "msg": "Signin Successful!",
+                    "authenticationToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG4uZG9lQGV4YW1wbGUuY29tIiwiaWF0IjoxNzcxMTc2MTY4fQ.xT3tFGaGt32n-gVDzopFssqJFSg2_5lSeitSVB6bD0k"
+                }
+        '404':
+          description: Not Found
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '38'
+            ETag:
+              schema:
+                type: string
+                example: W/"26-S5burJBquJJdRWwerYAe1ATWkIY"
+            Date:
+              schema:
+                type: string
+                example: Sun, 15 Feb 2026 17:24:08 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: |-
+                {
+                    "msg": "Invalid email (or) password!"
+                }
+  /user/transactions/create:
+    post:
+      tags:
+        - Transactions
+      summary: Adding Transaction
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                userId: USER001
+                title: Bonus Received
+                amount: 5000
+                category: Income
+                date: '2026-02-18'
+                notes: Performance bonus
+      responses:
+        '201':
+          description: Created
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '243'
+            ETag:
+              schema:
+                type: string
+                example: W/"f3-bbeSVZo71sqliCGOBvo5VQdSxY0"
+            Date:
+              schema:
+                type: string
+                example: Sun, 15 Feb 2026 19:00:35 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: |-
+                {
+                    "msg": "New transaction create successfully!",
+                    "data": {
+                        "userId": "USER001",
+                        "title": "Grocery Shopping",
+                        "amount": 3200,
+                        "category": "Food",
+                        "date": "2026-02-01T00:00:00.000Z",
+                        "notes": "Weekly supermarket visit",
+                        "_id": "699217d34a7801c7e3244df5",
+                        "__v": 0
+                    }
+                }
+        '400':
+          description: Bad Request
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '24'
+            ETag:
+              schema:
+                type: string
+                example: W/"18-n9sxKWfrRA0383o/o9pGjmo28dk"
+            Date:
+              schema:
+                type: string
+                example: Sun, 15 Feb 2026 19:02:56 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            text/plain:
+              schema:
+                type: string
+              examples:
+                example-0:
+                  summary: Bad Response (invalid UserID)
+                  value: |-
+                    {
+                        "msg": "Invalid userID"
+                    }
+                example-1:
+                  summary: Bad Reponse (invalid Category)
+                  value: |-
+                    {
+                        "error": "[\n  {\n    \"code\": \"invalid_value\",\n    \"values\": [\n      \"Food\",\n      \"Transport\",\n      \"Rent\",\n      \"Utilities\",\n      \"Entertainment\",\n      \"Shopping\",\n      \"Income\",\n      \"Miscellaneous\",\n      \"Other\"\n    ],\n    \"path\": [\n      \"category\"\n    ],\n    \"message\": \"Invalid option: expected one of \\\"Food\\\"|\\\"Transport\\\"|\\\"Rent\\\"|\\\"Utilities\\\"|\\\"Entertainment\\\"|\\\"Shopping\\\"|\\\"Income\\\"|\\\"Miscellaneous\\\"|\\\"Other\\\"\"\n  }\n]"
+                    }
+        '401':
+          description: Unauthorized
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '38'
+            ETag:
+              schema:
+                type: string
+                example: W/"26-p/QTD8ryuGruY/PovgGAYV70CfE"
+            Date:
+              schema:
+                type: string
+                example: Sun, 15 Feb 2026 19:01:32 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            text/plain:
+              schema:
+                type: string
+              examples:
+                example-0:
+                  summary: Unauthorized Response (invalid Token)
+                  value: |-
+                    {
+                        "msg": "Invalid authorization token!"
+                    }
+                example-1:
+                  summary: Unauthorized Response (authorization Header Missing)
+                  value: |-
+                    {
+                        "msg": "Authorization header missing!"
+                    }
+  /user/transactions/edit/699217d34a7801c7e3244df5:
+    put:
+      tags:
+        - Transactions
+      summary: Editing Transaction
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                title: Gift Purchase
+                amount: 1500
+                category: Shopping
+                date: '2026-02-15'
+                notes: Birthday gift
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '246'
+            ETag:
+              schema:
+                type: string
+                example: W/"f6-sXm2p57nZYtgKnVUeu8clCYlxrM"
+            Date:
+              schema:
+                type: string
+                example: Sun, 15 Feb 2026 20:10:25 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: |-
+                {
+                    "msg": "Edited the transaction successfully!",
+                    "editedTransaction": {
+                        "_id": "699217d34a7801c7e3244df5",
+                        "userId": "USER001",
+                        "title": "Gift Purchase",
+                        "amount": 1500,
+                        "category": "Shopping",
+                        "date": "2026-02-15T00:00:00.000Z",
+                        "notes": "Birthday gift",
+                        "__v": 0
+                    }
+                }
+        '404':
+          description: Not Found
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '33'
+            ETag:
+              schema:
+                type: string
+                example: W/"21-p42k6TFHNeM4Q6czKaY8k1A9NyM"
+            Date:
+              schema:
+                type: string
+                example: Sun, 15 Feb 2026 20:11:07 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: |-
+                {
+                    "msg": "Invalid transaction ID!"
+                }
+  /user/transactions/delete/699218d64a7801c7e3244dfc:
+    delete:
+      tags:
+        - Transactions
+      summary: Deleting Transaction
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '43'
+            ETag:
+              schema:
+                type: string
+                example: W/"2b-ee16yrUxqPlZUxmW64ndy6w8ruU"
+            Date:
+              schema:
+                type: string
+                example: Sun, 15 Feb 2026 21:16:47 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: |-
+                {
+                    "msg": "Transaction deleted successfully!"
+                }
+        '404':
+          description: Not Found
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '33'
+            ETag:
+              schema:
+                type: string
+                example: W/"21-p42k6TFHNeM4Q6czKaY8k1A9NyM"
+            Date:
+              schema:
+                type: string
+                example: Sun, 15 Feb 2026 21:17:18 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: |-
+                {
+                    "msg": "Invalid transaction ID!"
+                }
+  /user/transactions:
+    get:
+      tags:
+        - Transactions
+      summary: Fetch Transactions
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '2871'
+            ETag:
+              schema:
+                type: string
+                example: W/"b37-Obb8iDUAOWsfVSshqK/4PK+utX4"
+            Date:
+              schema:
+                type: string
+                example: Sun, 15 Feb 2026 23:01:05 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            text/plain:
+              schema:
+                type: string
+              examples:
+                example-0:
+                  summary: Successful Response (all transactions with specific UserID)
+                  value: |-
+                    {
+                        "hasFilters": false,
+                        "hasPagination": false,
+                        "data": [
+                            {
+                                "_id": "699217d34a7801c7e3244df5",
+                                "userId": "USER001",
+                                "title": "Gift Purchase",
+                                "amount": 1500,
+                                "category": "Shopping",
+                                "date": "2026-02-15T00:00:00.000Z",
+                                "notes": "Birthday gift",
+                                "__v": 0
+                            },
+                            {
+                                "_id": "699218c14a7801c7e3244df9",
+                                "userId": "USER001",
+                                "title": "Bus Transport Pass",
+                                "amount": 800,
+                                "category": "Transport",
+                                "date": "2026-02-02T00:00:00.000Z",
+                                "notes": "Monthly city bus pass",
+                                "__v": 0
+                            },
+                            {
+                                "_id": "699218f04a7801c7e3244dff",
+                                "userId": "USER001",
+                                "title": "Electricity Bill",
+                                "amount": 2200,
+                                "category": "Utilities",
+                                "date": "2026-02-04T00:00:00.000Z",
+                                "notes": "Monthly electricity bill",
+                                "__v": 0
+                            },
+                            {
+                                "_id": "699219114a7801c7e3244e02",
+                                "userId": "USER001",
+                                "title": "Movie Night (Dhurandhar)",
+                                "amount": 900,
+                                "category": "Entertainment",
+                                "date": "2026-02-05T00:00:00.000Z",
+                                "notes": "Cinema tickets",
+                                "__v": 0
+                            },
+                            {
+                                "_id": "699219254a7801c7e3244e05",
+                                "userId": "USER001",
+                                "title": "Online Shopping",
+                                "amount": 2700,
+                                "category": "Shopping",
+                                "date": "2026-02-06T00:00:00.000Z",
+                                "notes": "Clothing purchase",
+                                "__v": 0
+                            },
+                            {
+                                "_id": "6992193b4a7801c7e3244e08",
+                                "userId": "USER001",
+                                "title": "Freelance Payment",
+                                "amount": 12000,
+                                "category": "Income",
+                                "date": "2026-02-07T00:00:00.000Z",
+                                "notes": "Website development project",
+                                "__v": 0
+                            },
+                            {
+                                "_id": "69921b8c6de09f4b23177f7a",
+                                "userId": "USER001",
+                                "title": "Coffee (Americano)",
+                                "amount": 250,
+                                "category": "Food",
+                                "date": "2026-02-08T00:00:00.000Z",
+                                "notes": "Cafe visit",
+                                "__v": 0
+                            },
+                            {
+                                "_id": "69921bb76de09f4b23177f7d",
+                                "userId": "USER001",
+                                "title": "Fuel for Car",
+                                "amount": 3000,
+                                "category": "Transport",
+                                "date": "2026-02-09T00:00:00.000Z",
+                                "notes": "Car petrol refill",
+                                "__v": 0
+                            },
+                            {
+                                "_id": "69921bd66de09f4b23177f80",
+                                "userId": "USER001",
+                                "title": "Water Bill",
+                                "amount": 600,
+                                "category": "Utilities",
+                                "date": "2026-02-10T00:00:00.000Z",
+                                "notes": "Monthly water charges",
+                                "__v": 0
+                            },
+                            {
+                                "_id": "69921be66de09f4b23177f83",
+                                "userId": "USER001",
+                                "title": "Concert Ticket",
+                                "amount": 2000,
+                                "category": "Entertainment",
+                                "date": "2026-02-11T00:00:00.000Z",
+                                "notes": "Live music event",
+                                "__v": 0
+                            },
+                            {
+                                "_id": "69921c106de09f4b23177f86",
+                                "userId": "USER001",
+                                "title": "Mobile Recharge",
+                                "amount": 399,
+                                "category": "Utilities",
+                                "date": "2026-02-12T00:00:00.000Z",
+                                "notes": "Prepaid recharge",
+                                "__v": 0
+                            },
+                            {
+                                "_id": "69921c516de09f4b23177f89",
+                                "userId": "USER001",
+                                "title": "Dinner Out (Valentine's)",
+                                "amount": 1800,
+                                "category": "Food",
+                                "date": "2026-02-14T00:00:00.000Z",
+                                "notes": "Restaurant outing",
+                                "__v": 0
+                            },
+                            {
+                                "_id": "69921d090bf0f9f18122eaee",
+                                "userId": "USER001",
+                                "title": "Gym Membership",
+                                "amount": 2500,
+                                "category": "Miscellaneous",
+                                "date": "2026-02-14T00:00:00.000Z",
+                                "notes": "Monthly membership fee",
+                                "__v": 0
+                            },
+                            {
+                                "_id": "69921d270bf0f9f18122eaf1",
+                                "userId": "USER001",
+                                "title": "Stationery Purchase",
+                                "amount": 700,
+                                "category": "Other",
+                                "date": "2026-02-20T00:00:00.000Z",
+                                "notes": "Office supplies",
+                                "__v": 0
+                            },
+                            {
+                                "_id": "69921d360bf0f9f18122eaf4",
+                                "userId": "USER001",
+                                "title": "Bonus Received",
+                                "amount": 5000,
+                                "category": "Income",
+                                "date": "2026-02-18T00:00:00.000Z",
+                                "notes": "Performance bonus",
+                                "__v": 0
+                            }
+                        ]
+                    }
+                example-1:
+                  summary: Successful Response (with Category Filter)
+                  value: |-
+                    {
+                        "hasFilters": true,
+                        "hasPagination": false,
+                        "data": [
+                            {
+                                "_id": "699218c14a7801c7e3244df9",
+                                "userId": "USER001",
+                                "title": "Bus Transport Pass",
+                                "amount": 800,
+                                "category": "Transport",
+                                "date": "2026-02-02T00:00:00.000Z",
+                                "notes": "Monthly city bus pass",
+                                "__v": 0
+                            },
+                            {
+                                "_id": "69921bb76de09f4b23177f7d",
+                                "userId": "USER001",
+                                "title": "Fuel for Car",
+                                "amount": 3000,
+                                "category": "Transport",
+                                "date": "2026-02-09T00:00:00.000Z",
+                                "notes": "Car petrol refill",
+                                "__v": 0
+                            }
+                        ]
+                    }
+                example-2:
+                  summary: Successful Reponse (with Category and Amount)
+                  value: |-
+                    {
+                        "hasFilters": true,
+                        "hasPagination": false,
+                        "data": [
+                            {
+                                "_id": "69921bb76de09f4b23177f7d",
+                                "userId": "USER001",
+                                "title": "Fuel for Car",
+                                "amount": 3000,
+                                "category": "Transport",
+                                "date": "2026-02-09T00:00:00.000Z",
+                                "notes": "Car petrol refill",
+                                "__v": 0
+                            }
+                        ]
+                    }
+                example-3:
+                  summary: Successful Response (with Category, Amount and Date Filters)
+                  value: |-
+                    {
+                        "hasFilters": true,
+                        "hasPagination": false,
+                        "data": [
+                            {
+                                "_id": "69921bb76de09f4b23177f7d",
+                                "userId": "USER001",
+                                "title": "Fuel for Car",
+                                "amount": 3000,
+                                "category": "Transport",
+                                "date": "2026-02-09T00:00:00.000Z",
+                                "notes": "Car petrol refill",
+                                "__v": 0
+                            }
+                        ]
+                    }
+                example-4:
+                  summary: Successful Response (with Pagaination Only)
+                  value: |-
+                    {
+                        "hasFilters": false,
+                        "hasPagination": true,
+                        "totalTransactions": 15,
+                        "totalPages": 3,
+                        "currentPage": 1,
+                        "limitForPage": 5,
+                        "data": [
+                            {
+                                "_id": "699217d34a7801c7e3244df5",
+                                "userId": "USER001",
+                                "title": "Gift Purchase",
+                                "amount": 1500,
+                                "category": "Shopping",
+                                "date": "2026-02-15T00:00:00.000Z",
+                                "notes": "Birthday gift",
+                                "__v": 0
+                            },
+                            {
+                                "_id": "699218c14a7801c7e3244df9",
+                                "userId": "USER001",
+                                "title": "Bus Transport Pass",
+                                "amount": 800,
+                                "category": "Transport",
+                                "date": "2026-02-02T00:00:00.000Z",
+                                "notes": "Monthly city bus pass",
+                                "__v": 0
+                            },
+                            {
+                                "_id": "699218f04a7801c7e3244dff",
+                                "userId": "USER001",
+                                "title": "Electricity Bill",
+                                "amount": 2200,
+                                "category": "Utilities",
+                                "date": "2026-02-04T00:00:00.000Z",
+                                "notes": "Monthly electricity bill",
+                                "__v": 0
+                            },
+                            {
+                                "_id": "699219114a7801c7e3244e02",
+                                "userId": "USER001",
+                                "title": "Movie Night (Dhurandhar)",
+                                "amount": 900,
+                                "category": "Entertainment",
+                                "date": "2026-02-05T00:00:00.000Z",
+                                "notes": "Cinema tickets",
+                                "__v": 0
+                            },
+                            {
+                                "_id": "699219254a7801c7e3244e05",
+                                "userId": "USER001",
+                                "title": "Online Shopping",
+                                "amount": 2700,
+                                "category": "Shopping",
+                                "date": "2026-02-06T00:00:00.000Z",
+                                "notes": "Clothing purchase",
+                                "__v": 0
+                            }
+                        ]
+                    }
+                example-5:
+                  summary: Successful Response (with Filters and Pagination)
+                  value: |-
+                    {
+                        "hasFilters": true,
+                        "hasPagination": true,
+                        "totalTransactions": 2,
+                        "totalPages": 1,
+                        "currentPage": 1,
+                        "limitForPage": 5,
+                        "data": [
+                            {
+                                "_id": "699218c14a7801c7e3244df9",
+                                "userId": "USER001",
+                                "title": "Bus Transport Pass",
+                                "amount": 800,
+                                "category": "Transport",
+                                "date": "2026-02-02T00:00:00.000Z",
+                                "notes": "Monthly city bus pass",
+                                "__v": 0
+                            },
+                            {
+                                "_id": "69921bb76de09f4b23177f7d",
+                                "userId": "USER001",
+                                "title": "Fuel for Car",
+                                "amount": 3000,
+                                "category": "Transport",
+                                "date": "2026-02-09T00:00:00.000Z",
+                                "notes": "Car petrol refill",
+                                "__v": 0
+                            }
+                        ]
+                    }
+  /user/transactions/analytics:
+    get:
+      tags:
+        - Transactions
+      summary: Fetch Analytics
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '989'
+            ETag:
+              schema:
+                type: string
+                example: W/"3dd-LCIlj719xIC9ExT476B8a6GzSF4"
+            Date:
+              schema:
+                type: string
+                example: Mon, 16 Feb 2026 00:12:23 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: |-
+                {
+                    "msg": "Transaction Analytics",
+                    "lastFiveTransactions": [
+                        {
+                            "_id": "69921d270bf0f9f18122eaf1",
+                            "userId": "USER001",
+                            "title": "Stationery Purchase",
+                            "amount": 700,
+                            "category": "Other",
+                            "date": "2026-02-20T00:00:00.000Z",
+                            "notes": "Office supplies",
+                            "__v": 0
+                        },
+                        {
+                            "_id": "69921d360bf0f9f18122eaf4",
+                            "userId": "USER001",
+                            "title": "Bonus Received",
+                            "amount": 5000,
+                            "category": "Income",
+                            "date": "2026-02-18T00:00:00.000Z",
+                            "notes": "Performance bonus",
+                            "__v": 0
+                        },
+                        {
+                            "_id": "699217d34a7801c7e3244df5",
+                            "userId": "USER001",
+                            "title": "Gift Purchase",
+                            "amount": 1500,
+                            "category": "Shopping",
+                            "date": "2026-02-15T00:00:00.000Z",
+                            "notes": "Birthday gift",
+                            "__v": 0
+                        },
+                        {
+                            "_id": "69921c516de09f4b23177f89",
+                            "userId": "USER001",
+                            "title": "Dinner Out (Valentine's)",
+                            "amount": 1800,
+                            "category": "Food",
+                            "date": "2026-02-14T00:00:00.000Z",
+                            "notes": "Restaurant outing",
+                            "__v": 0
+                        },
+                        {
+                            "_id": "69921d090bf0f9f18122eaee",
+                            "userId": "USER001",
+                            "title": "Gym Membership",
+                            "amount": 2500,
+                            "category": "Miscellaneous",
+                            "date": "2026-02-14T00:00:00.000Z",
+                            "notes": "Monthly membership fee",
+                            "__v": 0
+                        }
+                    ]
+                }
+  /user/bad-route:
+    get:
+      tags:
+        - Non-Existing Routes
+      summary: Bad Route
+      responses:
+        '404':
+          description: Not Found
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '41'
+            ETag:
+              schema:
+                type: string
+                example: W/"29-/pGvU7ufm+QeeHl2OFs1rp+S4xU"
+            Date:
+              schema:
+                type: string
+                example: Mon, 16 Feb 2026 00:33:36 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: |-
+                {
+                    "error": "Bad route (or) No route found"
+                }
+components:
+  securitySchemes:
+    UserAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: |
+        🔐 **User Authorization**
+
+        - Use an **User JWT token.**
+        - Paste the token in the **Authorize** button.
+        - _Note: Do not attach the Bearer in this only use the (raw token)_
+        - Format must be exactly only the _(raw token)_:
+        `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG4uZG9lQGV4YW1wbGUuY29tIiwiaWF0IjoxNzcxMTc2MTY4fQ.xT3tFGaGt32n-gVDzopFssqJFSg2_5lSeitSVB6bD0k`

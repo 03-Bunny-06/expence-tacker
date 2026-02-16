@@ -1,0 +1,1835 @@
+{
+  "info": {
+    "_postman_id": "f4ca5b70-b52e-4963-a938-574ba668a09b",
+    "name": "Expense Tracker",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "39201744"
+  },
+  "item": [
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "User Registeration",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "userId",
+                "value": "USER001",
+                "type": "text"
+              },
+              {
+                "key": "email",
+                "value": "john.doe@example.com",
+                "type": "text"
+              },
+              {
+                "key": "password",
+                "value": "John@123",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api-expence-tacker.onrender.com/user/register",
+              "protocol": "https",
+              "host": [
+                "api-expence-tacker",
+                "onrender",
+                "com"
+              ],
+              "path": [
+                "user",
+                "register"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Successful Response (user Registeration Successful)",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "userId",
+                    "value": "USER001",
+                    "type": "text"
+                  },
+                  {
+                    "key": "email",
+                    "value": "john.doe@example.com",
+                    "type": "text"
+                  },
+                  {
+                    "key": "password",
+                    "value": "John@123",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://api-expence-tacker.onrender.com/user/register",
+                  "protocol": "https",
+                  "host": [
+                    "api-expence-tacker",
+                    "onrender",
+                    "com"
+                  ],
+                  "path": [
+                    "user",
+                    "register"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "36"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"24-GS9ZkRlQWaaM0laoy5lry1MO7TU\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 15 Feb 2026 12:03:40 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"msg\": \"User created successfully!\"\n}"
+            },
+            {
+              "name": "Conflict Response (user Already Exists)",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "userId",
+                    "value": "USER001",
+                    "type": "text"
+                  },
+                  {
+                    "key": "email",
+                    "value": "john.doe@example.com",
+                    "type": "text"
+                  },
+                  {
+                    "key": "password",
+                    "value": "John@123",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://api-expence-tacker.onrender.com/user/register",
+                  "protocol": "https",
+                  "host": [
+                    "api-expence-tacker",
+                    "onrender",
+                    "com"
+                  ],
+                  "path": [
+                    "user",
+                    "register"
+                  ]
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "79"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"4f-zHNXuDk0r9ZbLZMZuT1BsDL7PIo\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 15 Feb 2026 12:05:31 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"msg\": \"User already exists, Try Login (or) use a different userId and email!\"\n}"
+            },
+            {
+              "name": "Bad Response (input Validation Failed)",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "userId",
+                    "value": "USER001",
+                    "type": "text"
+                  },
+                  {
+                    "key": "email",
+                    "value": "john.com",
+                    "type": "text"
+                  },
+                  {
+                    "key": "password",
+                    "value": "John@123",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://api-expence-tacker.onrender.com/user/register",
+                  "protocol": "https",
+                  "host": [
+                    "api-expence-tacker",
+                    "onrender",
+                    "com"
+                  ],
+                  "path": [
+                    "user",
+                    "register"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "346"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"15a-J43OADirCbInRPBbWL2DFhFR3ok\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 15 Feb 2026 12:06:06 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"error\": \"[\\n  {\\n    \\\"origin\\\": \\\"string\\\",\\n    \\\"code\\\": \\\"invalid_format\\\",\\n    \\\"format\\\": \\\"email\\\",\\n    \\\"pattern\\\": \\\"/^(?!\\\\\\\\.)(?!.*\\\\\\\\.\\\\\\\\.)([A-Za-z0-9_'+\\\\\\\\-\\\\\\\\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\\\\\\\\-]*\\\\\\\\.)+[A-Za-z]{2,}$/\\\",\\n    \\\"path\\\": [\\n      \\\"email\\\"\\n    ],\\n    \\\"message\\\": \\\"Invalid email format\\\"\\n  }\\n]\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "User Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "email",
+                "value": "john.doe@example.com",
+                "type": "text"
+              },
+              {
+                "key": "password",
+                "value": "John@123",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://api-expence-tacker.onrender.com/user/login",
+              "protocol": "https",
+              "host": [
+                "api-expence-tacker",
+                "onrender",
+                "com"
+              ],
+              "path": [
+                "user",
+                "login"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Successful Response (user Logged In Successful)",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "email",
+                    "value": "john.doe@example.com",
+                    "type": "text"
+                  },
+                  {
+                    "key": "password",
+                    "value": "John@123",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "https://api-expence-tacker.onrender.com/user/login",
+                  "protocol": "https",
+                  "host": [
+                    "api-expence-tacker",
+                    "onrender",
+                    "com"
+                  ],
+                  "path": [
+                    "user",
+                    "login"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "200"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"c8-AXA8cEHYoqkwXz8Q+3/RQ/S59oU\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 15 Feb 2026 17:22:48 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"msg\": \"Signin Successful!\",\n    \"authenticationToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG4uZG9lQGV4YW1wbGUuY29tIiwiaWF0IjoxNzcxMTc2MTY4fQ.xT3tFGaGt32n-gVDzopFssqJFSg2_5lSeitSVB6bD0k\"\n}"
+            },
+            {
+              "name": "Not Found Response (user Login Failed)",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "email",
+                    "value": "john.doe@eple.com",
+                    "type": "text"
+                  },
+                  {
+                    "key": "password",
+                    "value": "John@123",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "https://api-expence-tacker.onrender.com/user/login",
+                  "protocol": "https",
+                  "host": [
+                    "api-expence-tacker",
+                    "onrender",
+                    "com"
+                  ],
+                  "path": [
+                    "user",
+                    "login"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "38"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"26-S5burJBquJJdRWwerYAe1ATWkIY\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 15 Feb 2026 17:24:08 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"msg\": \"Invalid email (or) password!\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Transactions",
+      "item": [
+        {
+          "name": "Adding Transaction",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG4uZG9lQGV4YW1wbGUuY29tIiwiaWF0IjoxNzcxMTc2MTY4fQ.xT3tFGaGt32n-gVDzopFssqJFSg2_5lSeitSVB6bD0k",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"userId\": \"USER001\",\r\n    \"title\": \"Bonus Received\",\r\n    \"amount\": 5000,\r\n    \"category\": \"Income\",\r\n    \"date\": \"2026-02-18\",\r\n    \"notes\": \"Performance bonus\" \r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api-expence-tacker.onrender.com/user/transactions/create",
+              "protocol": "https",
+              "host": [
+                "api-expence-tacker",
+                "onrender",
+                "com"
+              ],
+              "path": [
+                "user",
+                "transactions",
+                "create"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Successful Response (transaction Created Successfully)",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG4uZG9lQGV4YW1wbGUuY29tIiwiaWF0IjoxNzcxMTc2MTY4fQ.xT3tFGaGt32n-gVDzopFssqJFSg2_5lSeitSVB6bD0k",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{ \r\n    \"userId\": \"USER001\", \r\n    \"title\": \"Grocery Shopping\",\r\n    \"amount\": 3200,\r\n    \"category\": \"Food\", \r\n    \"date\": \"2026-02-01\", \r\n    \"notes\": \"Weekly supermarket visit\" \r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://api-expence-tacker.onrender.com/user/transactions/create",
+                  "protocol": "https",
+                  "host": [
+                    "api-expence-tacker",
+                    "onrender",
+                    "com"
+                  ],
+                  "path": [
+                    "user",
+                    "transactions",
+                    "create"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "243"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"f3-bbeSVZo71sqliCGOBvo5VQdSxY0\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 15 Feb 2026 19:00:35 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"msg\": \"New transaction create successfully!\",\n    \"data\": {\n        \"userId\": \"USER001\",\n        \"title\": \"Grocery Shopping\",\n        \"amount\": 3200,\n        \"category\": \"Food\",\n        \"date\": \"2026-02-01T00:00:00.000Z\",\n        \"notes\": \"Weekly supermarket visit\",\n        \"_id\": \"699217d34a7801c7e3244df5\",\n        \"__v\": 0\n    }\n}"
+            },
+            {
+              "name": "Unauthorized Response (invalid Token)",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG4uZG9lQGV4YW1wbGUuY29tIiwiaWF0IjoxNzcxMTc2MTY4fQ.xT3tFGaGt32n-gVDzopFssqJFSg2_5lSeitSVB6bD0k",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{ \r\n    \"userId\": \"USER001\", \r\n    \"title\": \"Grocery Shopping\",\r\n    \"amount\": 3200,\r\n    \"category\": \"Food\", \r\n    \"date\": \"2026-02-01\", \r\n    \"notes\": \"Weekly supermarket visit\" \r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://api-expence-tacker.onrender.com/user/transactions/create",
+                  "protocol": "https",
+                  "host": [
+                    "api-expence-tacker",
+                    "onrender",
+                    "com"
+                  ],
+                  "path": [
+                    "user",
+                    "transactions",
+                    "create"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "38"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"26-p/QTD8ryuGruY/PovgGAYV70CfE\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 15 Feb 2026 19:01:32 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"msg\": \"Invalid authorization token!\"\n}"
+            },
+            {
+              "name": "Unauthorized Response (authorization Header Missing)",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{ \r\n    \"userId\": \"USER001\", \r\n    \"title\": \"Grocery Shopping\",\r\n    \"amount\": 3200,\r\n    \"category\": \"Food\", \r\n    \"date\": \"2026-02-01\", \r\n    \"notes\": \"Weekly supermarket visit\" \r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://api-expence-tacker.onrender.com/user/transactions/create",
+                  "protocol": "https",
+                  "host": [
+                    "api-expence-tacker",
+                    "onrender",
+                    "com"
+                  ],
+                  "path": [
+                    "user",
+                    "transactions",
+                    "create"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "39"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"27-wtLXfwROJG7VIsbROvQorPY6YlI\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 15 Feb 2026 19:02:13 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"msg\": \"Authorization header missing!\"\n}"
+            },
+            {
+              "name": "Bad Response (invalid UserID)",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG4uZG9lQGV4YW1wbGUuY29tIiwiaWF0IjoxNzcxMTc2MTY4fQ.xT3tFGaGt32n-gVDzopFssqJFSg2_5lSeitSVB6bD0k",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{ \r\n    \"userId\": \"USER00\", \r\n    \"title\": \"Grocery Shopping\",\r\n    \"amount\": 3200,\r\n    \"category\": \"Food\", \r\n    \"date\": \"2026-02-01\", \r\n    \"notes\": \"Weekly supermarket visit\" \r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://api-expence-tacker.onrender.com/user/transactions/create",
+                  "protocol": "https",
+                  "host": [
+                    "api-expence-tacker",
+                    "onrender",
+                    "com"
+                  ],
+                  "path": [
+                    "user",
+                    "transactions",
+                    "create"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "24"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"18-n9sxKWfrRA0383o/o9pGjmo28dk\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 15 Feb 2026 19:02:56 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"msg\": \"Invalid userID\"\n}"
+            },
+            {
+              "name": "Bad Reponse (invalid Category)",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG4uZG9lQGV4YW1wbGUuY29tIiwiaWF0IjoxNzcxMTc2MTY4fQ.xT3tFGaGt32n-gVDzopFssqJFSg2_5lSeitSVB6bD0k",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{ \"userId\": \"USER001\", \"title\": \"Dinner Out (Valentine's)\", \"amount\": 1800, \"category\": \"Fod\", \"date\": \"2026-02-14\", \"notes\": \"Restaurant outing\" }",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://api-expence-tacker.onrender.com/user/transactions/create",
+                  "protocol": "https",
+                  "host": [
+                    "api-expence-tacker",
+                    "onrender",
+                    "com"
+                  ],
+                  "path": [
+                    "user",
+                    "transactions",
+                    "create"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "525"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"20d-hotsoFMb+0tA8CZZS4XUOIb1c6s\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 15 Feb 2026 19:22:00 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"error\": \"[\\n  {\\n    \\\"code\\\": \\\"invalid_value\\\",\\n    \\\"values\\\": [\\n      \\\"Food\\\",\\n      \\\"Transport\\\",\\n      \\\"Rent\\\",\\n      \\\"Utilities\\\",\\n      \\\"Entertainment\\\",\\n      \\\"Shopping\\\",\\n      \\\"Income\\\",\\n      \\\"Miscellaneous\\\",\\n      \\\"Other\\\"\\n    ],\\n    \\\"path\\\": [\\n      \\\"category\\\"\\n    ],\\n    \\\"message\\\": \\\"Invalid option: expected one of \\\\\\\"Food\\\\\\\"|\\\\\\\"Transport\\\\\\\"|\\\\\\\"Rent\\\\\\\"|\\\\\\\"Utilities\\\\\\\"|\\\\\\\"Entertainment\\\\\\\"|\\\\\\\"Shopping\\\\\\\"|\\\\\\\"Income\\\\\\\"|\\\\\\\"Miscellaneous\\\\\\\"|\\\\\\\"Other\\\\\\\"\\\"\\n  }\\n]\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Editing Transaction",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG4uZG9lQGV4YW1wbGUuY29tIiwiaWF0IjoxNzcxMTc2MTY4fQ.xT3tFGaGt32n-gVDzopFssqJFSg2_5lSeitSVB6bD0k",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\": \"Gift Purchase\",\r\n    \"amount\": 1500,\r\n    \"category\": \"Shopping\",\r\n    \"date\": \"2026-02-15\",\r\n    \"notes\": \"Birthday gift\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api-expence-tacker.onrender.com/user/transactions/edit/699217d34a7801c7e3244df5",
+              "protocol": "https",
+              "host": [
+                "api-expence-tacker",
+                "onrender",
+                "com"
+              ],
+              "path": [
+                "user",
+                "transactions",
+                "edit",
+                "699217d34a7801c7e3244df5"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Successful Response (edited Successfully)",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG4uZG9lQGV4YW1wbGUuY29tIiwiaWF0IjoxNzcxMTc2MTY4fQ.xT3tFGaGt32n-gVDzopFssqJFSg2_5lSeitSVB6bD0k",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"title\": \"Gift Purchase\",\r\n    \"amount\": 1500,\r\n    \"category\": \"Shopping\",\r\n    \"date\": \"2026-02-15\",\r\n    \"notes\": \"Birthday gift\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://api-expence-tacker.onrender.com/user/transactions/edit/699217d34a7801c7e3244df5",
+                  "protocol": "https",
+                  "host": [
+                    "api-expence-tacker",
+                    "onrender",
+                    "com"
+                  ],
+                  "path": [
+                    "user",
+                    "transactions",
+                    "edit",
+                    "699217d34a7801c7e3244df5"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "246"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"f6-sXm2p57nZYtgKnVUeu8clCYlxrM\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 15 Feb 2026 20:10:25 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"msg\": \"Edited the transaction successfully!\",\n    \"editedTransaction\": {\n        \"_id\": \"699217d34a7801c7e3244df5\",\n        \"userId\": \"USER001\",\n        \"title\": \"Gift Purchase\",\n        \"amount\": 1500,\n        \"category\": \"Shopping\",\n        \"date\": \"2026-02-15T00:00:00.000Z\",\n        \"notes\": \"Birthday gift\",\n        \"__v\": 0\n    }\n}"
+            },
+            {
+              "name": "Not Found Response (invalid Transaction ID)",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG4uZG9lQGV4YW1wbGUuY29tIiwiaWF0IjoxNzcxMTc2MTY4fQ.xT3tFGaGt32n-gVDzopFssqJFSg2_5lSeitSVB6bD0k",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"title\": \"Gift Purchase\",\r\n    \"amount\": 1500,\r\n    \"category\": \"Shopping\",\r\n    \"date\": \"2026-02-15\",\r\n    \"notes\": \"Birthday gift\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://api-expence-tacker.onrender.com/user/transactions/edit/699217d34a780",
+                  "protocol": "https",
+                  "host": [
+                    "api-expence-tacker",
+                    "onrender",
+                    "com"
+                  ],
+                  "path": [
+                    "user",
+                    "transactions",
+                    "edit",
+                    "699217d34a780"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "33"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"21-p42k6TFHNeM4Q6czKaY8k1A9NyM\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 15 Feb 2026 20:11:07 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"msg\": \"Invalid transaction ID!\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Deleting Transaction",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG4uZG9lQGV4YW1wbGUuY29tIiwiaWF0IjoxNzcxMTc2MTY4fQ.xT3tFGaGt32n-gVDzopFssqJFSg2_5lSeitSVB6bD0k",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3001/user/transactions/delete/699218d64a7801c7e3244dfc",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3001",
+              "path": [
+                "user",
+                "transactions",
+                "delete",
+                "699218d64a7801c7e3244dfc"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Successful Response (transaction Deleted)",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG4uZG9lQGV4YW1wbGUuY29tIiwiaWF0IjoxNzcxMTc2MTY4fQ.xT3tFGaGt32n-gVDzopFssqJFSg2_5lSeitSVB6bD0k",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "https://api-expence-tacker.onrender.com/user/transactions/delete/699218d64a7801c7e3244dfc",
+                  "protocol": "https",
+                  "host": [
+                    "api-expence-tacker",
+                    "onrender",
+                    "com"
+                  ],
+                  "path": [
+                    "user",
+                    "transactions",
+                    "delete",
+                    "699218d64a7801c7e3244dfc"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "43"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"2b-ee16yrUxqPlZUxmW64ndy6w8ruU\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 15 Feb 2026 21:16:47 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"msg\": \"Transaction deleted successfully!\"\n}"
+            },
+            {
+              "name": "Not Found Response (invalid Transaction ID)",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG4uZG9lQGV4YW1wbGUuY29tIiwiaWF0IjoxNzcxMTc2MTY4fQ.xT3tFGaGt32n-gVDzopFssqJFSg2_5lSeitSVB6bD0k",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "https://api-expence-tacker.onrender.com/user/transactions/delete/699",
+                  "protocol": "https",
+                  "host": [
+                    "api-expence-tacker",
+                    "onrender",
+                    "com"
+                  ],
+                  "path": [
+                    "user",
+                    "transactions",
+                    "delete",
+                    "699"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "33"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"21-p42k6TFHNeM4Q6czKaY8k1A9NyM\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 15 Feb 2026 21:17:18 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"msg\": \"Invalid transaction ID!\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Fetch Transactions",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG4uZG9lQGV4YW1wbGUuY29tIiwiaWF0IjoxNzcxMTc2MTY4fQ.xT3tFGaGt32n-gVDzopFssqJFSg2_5lSeitSVB6bD0k",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3001/user/transactions",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3001",
+              "path": [
+                "user",
+                "transactions"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Successful Response (all transactions with specific UserID)",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG4uZG9lQGV4YW1wbGUuY29tIiwiaWF0IjoxNzcxMTc2MTY4fQ.xT3tFGaGt32n-gVDzopFssqJFSg2_5lSeitSVB6bD0k",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "https://api-expence-tacker.onrender.com/user/transactions",
+                  "protocol": "https",
+                  "host": [
+                    "api-expence-tacker",
+                    "onrender",
+                    "com"
+                  ],
+                  "path": [
+                    "user",
+                    "transactions"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "2871"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"b37-Obb8iDUAOWsfVSshqK/4PK+utX4\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 15 Feb 2026 23:01:05 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"hasFilters\": false,\n    \"hasPagination\": false,\n    \"data\": [\n        {\n            \"_id\": \"699217d34a7801c7e3244df5\",\n            \"userId\": \"USER001\",\n            \"title\": \"Gift Purchase\",\n            \"amount\": 1500,\n            \"category\": \"Shopping\",\n            \"date\": \"2026-02-15T00:00:00.000Z\",\n            \"notes\": \"Birthday gift\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"699218c14a7801c7e3244df9\",\n            \"userId\": \"USER001\",\n            \"title\": \"Bus Transport Pass\",\n            \"amount\": 800,\n            \"category\": \"Transport\",\n            \"date\": \"2026-02-02T00:00:00.000Z\",\n            \"notes\": \"Monthly city bus pass\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"699218f04a7801c7e3244dff\",\n            \"userId\": \"USER001\",\n            \"title\": \"Electricity Bill\",\n            \"amount\": 2200,\n            \"category\": \"Utilities\",\n            \"date\": \"2026-02-04T00:00:00.000Z\",\n            \"notes\": \"Monthly electricity bill\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"699219114a7801c7e3244e02\",\n            \"userId\": \"USER001\",\n            \"title\": \"Movie Night (Dhurandhar)\",\n            \"amount\": 900,\n            \"category\": \"Entertainment\",\n            \"date\": \"2026-02-05T00:00:00.000Z\",\n            \"notes\": \"Cinema tickets\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"699219254a7801c7e3244e05\",\n            \"userId\": \"USER001\",\n            \"title\": \"Online Shopping\",\n            \"amount\": 2700,\n            \"category\": \"Shopping\",\n            \"date\": \"2026-02-06T00:00:00.000Z\",\n            \"notes\": \"Clothing purchase\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6992193b4a7801c7e3244e08\",\n            \"userId\": \"USER001\",\n            \"title\": \"Freelance Payment\",\n            \"amount\": 12000,\n            \"category\": \"Income\",\n            \"date\": \"2026-02-07T00:00:00.000Z\",\n            \"notes\": \"Website development project\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"69921b8c6de09f4b23177f7a\",\n            \"userId\": \"USER001\",\n            \"title\": \"Coffee (Americano)\",\n            \"amount\": 250,\n            \"category\": \"Food\",\n            \"date\": \"2026-02-08T00:00:00.000Z\",\n            \"notes\": \"Cafe visit\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"69921bb76de09f4b23177f7d\",\n            \"userId\": \"USER001\",\n            \"title\": \"Fuel for Car\",\n            \"amount\": 3000,\n            \"category\": \"Transport\",\n            \"date\": \"2026-02-09T00:00:00.000Z\",\n            \"notes\": \"Car petrol refill\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"69921bd66de09f4b23177f80\",\n            \"userId\": \"USER001\",\n            \"title\": \"Water Bill\",\n            \"amount\": 600,\n            \"category\": \"Utilities\",\n            \"date\": \"2026-02-10T00:00:00.000Z\",\n            \"notes\": \"Monthly water charges\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"69921be66de09f4b23177f83\",\n            \"userId\": \"USER001\",\n            \"title\": \"Concert Ticket\",\n            \"amount\": 2000,\n            \"category\": \"Entertainment\",\n            \"date\": \"2026-02-11T00:00:00.000Z\",\n            \"notes\": \"Live music event\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"69921c106de09f4b23177f86\",\n            \"userId\": \"USER001\",\n            \"title\": \"Mobile Recharge\",\n            \"amount\": 399,\n            \"category\": \"Utilities\",\n            \"date\": \"2026-02-12T00:00:00.000Z\",\n            \"notes\": \"Prepaid recharge\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"69921c516de09f4b23177f89\",\n            \"userId\": \"USER001\",\n            \"title\": \"Dinner Out (Valentine's)\",\n            \"amount\": 1800,\n            \"category\": \"Food\",\n            \"date\": \"2026-02-14T00:00:00.000Z\",\n            \"notes\": \"Restaurant outing\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"69921d090bf0f9f18122eaee\",\n            \"userId\": \"USER001\",\n            \"title\": \"Gym Membership\",\n            \"amount\": 2500,\n            \"category\": \"Miscellaneous\",\n            \"date\": \"2026-02-14T00:00:00.000Z\",\n            \"notes\": \"Monthly membership fee\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"69921d270bf0f9f18122eaf1\",\n            \"userId\": \"USER001\",\n            \"title\": \"Stationery Purchase\",\n            \"amount\": 700,\n            \"category\": \"Other\",\n            \"date\": \"2026-02-20T00:00:00.000Z\",\n            \"notes\": \"Office supplies\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"69921d360bf0f9f18122eaf4\",\n            \"userId\": \"USER001\",\n            \"title\": \"Bonus Received\",\n            \"amount\": 5000,\n            \"category\": \"Income\",\n            \"date\": \"2026-02-18T00:00:00.000Z\",\n            \"notes\": \"Performance bonus\",\n            \"__v\": 0\n        }\n    ]\n}"
+            },
+            {
+              "name": "Successful Response (with Category Filter)",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG4uZG9lQGV4YW1wbGUuY29tIiwiaWF0IjoxNzcxMTc2MTY4fQ.xT3tFGaGt32n-gVDzopFssqJFSg2_5lSeitSVB6bD0k",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "https://api-expence-tacker.onrender.com/user/transactions?category=Transport",
+                  "protocol": "https",
+                  "host": [
+                    "api-expence-tacker",
+                    "onrender",
+                    "com"
+                  ],
+                  "path": [
+                    "user",
+                    "transactions"
+                  ],
+                  "query": [
+                    {
+                      "key": "category",
+                      "value": "Transport"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "427"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"1ab-4aj5EiYqFRnDq7JaqbLyqz+Fj8I\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 15 Feb 2026 23:02:11 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"hasFilters\": true,\n    \"hasPagination\": false,\n    \"data\": [\n        {\n            \"_id\": \"699218c14a7801c7e3244df9\",\n            \"userId\": \"USER001\",\n            \"title\": \"Bus Transport Pass\",\n            \"amount\": 800,\n            \"category\": \"Transport\",\n            \"date\": \"2026-02-02T00:00:00.000Z\",\n            \"notes\": \"Monthly city bus pass\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"69921bb76de09f4b23177f7d\",\n            \"userId\": \"USER001\",\n            \"title\": \"Fuel for Car\",\n            \"amount\": 3000,\n            \"category\": \"Transport\",\n            \"date\": \"2026-02-09T00:00:00.000Z\",\n            \"notes\": \"Car petrol refill\",\n            \"__v\": 0\n        }\n    ]\n}"
+            },
+            {
+              "name": "Successful Reponse (with Category and Amount)",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG4uZG9lQGV4YW1wbGUuY29tIiwiaWF0IjoxNzcxMTc2MTY4fQ.xT3tFGaGt32n-gVDzopFssqJFSg2_5lSeitSVB6bD0k",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "https://api-expence-tacker.onrender.com/user/transactions?category=Transport&amount=1000",
+                  "protocol": "https",
+                  "host": [
+                    "api-expence-tacker",
+                    "onrender",
+                    "com"
+                  ],
+                  "path": [
+                    "user",
+                    "transactions"
+                  ],
+                  "query": [
+                    {
+                      "key": "category",
+                      "value": "Transport"
+                    },
+                    {
+                      "key": "amount",
+                      "value": "1000"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "234"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"ea-70MctsRTX/i013hOaZomiVIUto0\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 15 Feb 2026 23:03:05 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"hasFilters\": true,\n    \"hasPagination\": false,\n    \"data\": [\n        {\n            \"_id\": \"69921bb76de09f4b23177f7d\",\n            \"userId\": \"USER001\",\n            \"title\": \"Fuel for Car\",\n            \"amount\": 3000,\n            \"category\": \"Transport\",\n            \"date\": \"2026-02-09T00:00:00.000Z\",\n            \"notes\": \"Car petrol refill\",\n            \"__v\": 0\n        }\n    ]\n}"
+            },
+            {
+              "name": "Successful Response (with Category, Amount and Date Filters)",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG4uZG9lQGV4YW1wbGUuY29tIiwiaWF0IjoxNzcxMTc2MTY4fQ.xT3tFGaGt32n-gVDzopFssqJFSg2_5lSeitSVB6bD0k",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "https://api-expence-tacker.onrender.com/user/transactions?category=Transport&amount=1000&date=2026-02-09",
+                  "protocol": "https",
+                  "host": [
+                    "api-expence-tacker",
+                    "onrender",
+                    "com"
+                  ],
+                  "path": [
+                    "user",
+                    "transactions"
+                  ],
+                  "query": [
+                    {
+                      "key": "category",
+                      "value": "Transport"
+                    },
+                    {
+                      "key": "amount",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "date",
+                      "value": "2026-02-09"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "234"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"ea-70MctsRTX/i013hOaZomiVIUto0\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 15 Feb 2026 23:04:52 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"hasFilters\": true,\n    \"hasPagination\": false,\n    \"data\": [\n        {\n            \"_id\": \"69921bb76de09f4b23177f7d\",\n            \"userId\": \"USER001\",\n            \"title\": \"Fuel for Car\",\n            \"amount\": 3000,\n            \"category\": \"Transport\",\n            \"date\": \"2026-02-09T00:00:00.000Z\",\n            \"notes\": \"Car petrol refill\",\n            \"__v\": 0\n        }\n    ]\n}"
+            },
+            {
+              "name": "Successful Response (with Pagaination Only)",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG4uZG9lQGV4YW1wbGUuY29tIiwiaWF0IjoxNzcxMTc2MTY4fQ.xT3tFGaGt32n-gVDzopFssqJFSg2_5lSeitSVB6bD0k",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "https://api-expence-tacker.onrender.com/user/transactions?page=1&limit=5",
+                  "protocol": "https",
+                  "host": [
+                    "api-expence-tacker",
+                    "onrender",
+                    "com"
+                  ],
+                  "path": [
+                    "user",
+                    "transactions"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "5"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "1071"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"42f-yAQELq0cayMcMicBsKB8Ag36/Us\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 15 Feb 2026 23:06:50 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"hasFilters\": false,\n    \"hasPagination\": true,\n    \"totalTransactions\": 15,\n    \"totalPages\": 3,\n    \"currentPage\": 1,\n    \"limitForPage\": 5,\n    \"data\": [\n        {\n            \"_id\": \"699217d34a7801c7e3244df5\",\n            \"userId\": \"USER001\",\n            \"title\": \"Gift Purchase\",\n            \"amount\": 1500,\n            \"category\": \"Shopping\",\n            \"date\": \"2026-02-15T00:00:00.000Z\",\n            \"notes\": \"Birthday gift\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"699218c14a7801c7e3244df9\",\n            \"userId\": \"USER001\",\n            \"title\": \"Bus Transport Pass\",\n            \"amount\": 800,\n            \"category\": \"Transport\",\n            \"date\": \"2026-02-02T00:00:00.000Z\",\n            \"notes\": \"Monthly city bus pass\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"699218f04a7801c7e3244dff\",\n            \"userId\": \"USER001\",\n            \"title\": \"Electricity Bill\",\n            \"amount\": 2200,\n            \"category\": \"Utilities\",\n            \"date\": \"2026-02-04T00:00:00.000Z\",\n            \"notes\": \"Monthly electricity bill\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"699219114a7801c7e3244e02\",\n            \"userId\": \"USER001\",\n            \"title\": \"Movie Night (Dhurandhar)\",\n            \"amount\": 900,\n            \"category\": \"Entertainment\",\n            \"date\": \"2026-02-05T00:00:00.000Z\",\n            \"notes\": \"Cinema tickets\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"699219254a7801c7e3244e05\",\n            \"userId\": \"USER001\",\n            \"title\": \"Online Shopping\",\n            \"amount\": 2700,\n            \"category\": \"Shopping\",\n            \"date\": \"2026-02-06T00:00:00.000Z\",\n            \"notes\": \"Clothing purchase\",\n            \"__v\": 0\n        }\n    ]\n}"
+            },
+            {
+              "name": "Successful Response (with Filters and Pagination)",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG4uZG9lQGV4YW1wbGUuY29tIiwiaWF0IjoxNzcxMTc2MTY4fQ.xT3tFGaGt32n-gVDzopFssqJFSg2_5lSeitSVB6bD0k",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "https://api-expence-tacker.onrender.com/user/transactions?category=Transport&page=1&limit=5",
+                  "protocol": "https",
+                  "host": [
+                    "api-expence-tacker",
+                    "onrender",
+                    "com"
+                  ],
+                  "path": [
+                    "user",
+                    "transactions"
+                  ],
+                  "query": [
+                    {
+                      "key": "category",
+                      "value": "Transport"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "5"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "496"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"1f0-l9o9oqGC+V3GGrLkZdvtxt22Hgo\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 15 Feb 2026 23:05:43 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"hasFilters\": true,\n    \"hasPagination\": true,\n    \"totalTransactions\": 2,\n    \"totalPages\": 1,\n    \"currentPage\": 1,\n    \"limitForPage\": 5,\n    \"data\": [\n        {\n            \"_id\": \"699218c14a7801c7e3244df9\",\n            \"userId\": \"USER001\",\n            \"title\": \"Bus Transport Pass\",\n            \"amount\": 800,\n            \"category\": \"Transport\",\n            \"date\": \"2026-02-02T00:00:00.000Z\",\n            \"notes\": \"Monthly city bus pass\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"69921bb76de09f4b23177f7d\",\n            \"userId\": \"USER001\",\n            \"title\": \"Fuel for Car\",\n            \"amount\": 3000,\n            \"category\": \"Transport\",\n            \"date\": \"2026-02-09T00:00:00.000Z\",\n            \"notes\": \"Car petrol refill\",\n            \"__v\": 0\n        }\n    ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "Fetch Analytics",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG4uZG9lQGV4YW1wbGUuY29tIiwiaWF0IjoxNzcxMTc2MTY4fQ.xT3tFGaGt32n-gVDzopFssqJFSg2_5lSeitSVB6bD0k",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "https://api-expence-tacker.onrender.com/user/transactions/analytics",
+              "protocol": "https",
+              "host": [
+                "api-expence-tacker",
+                "onrender",
+                "com"
+              ],
+              "path": [
+                "user",
+                "transactions",
+                "analytics"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Successful Response (fetched Analytics)",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG4uZG9lQGV4YW1wbGUuY29tIiwiaWF0IjoxNzcxMTc2MTY4fQ.xT3tFGaGt32n-gVDzopFssqJFSg2_5lSeitSVB6bD0k",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "https://api-expence-tacker.onrender.com/user/transactions/analytics",
+                  "protocol": "https",
+                  "host": [
+                    "api-expence-tacker",
+                    "onrender",
+                    "com"
+                  ],
+                  "path": [
+                    "user",
+                    "transactions",
+                    "analytics"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "989"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"3dd-LCIlj719xIC9ExT476B8a6GzSF4\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 16 Feb 2026 00:12:23 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"msg\": \"Transaction Analytics\",\n    \"lastFiveTransactions\": [\n        {\n            \"_id\": \"69921d270bf0f9f18122eaf1\",\n            \"userId\": \"USER001\",\n            \"title\": \"Stationery Purchase\",\n            \"amount\": 700,\n            \"category\": \"Other\",\n            \"date\": \"2026-02-20T00:00:00.000Z\",\n            \"notes\": \"Office supplies\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"69921d360bf0f9f18122eaf4\",\n            \"userId\": \"USER001\",\n            \"title\": \"Bonus Received\",\n            \"amount\": 5000,\n            \"category\": \"Income\",\n            \"date\": \"2026-02-18T00:00:00.000Z\",\n            \"notes\": \"Performance bonus\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"699217d34a7801c7e3244df5\",\n            \"userId\": \"USER001\",\n            \"title\": \"Gift Purchase\",\n            \"amount\": 1500,\n            \"category\": \"Shopping\",\n            \"date\": \"2026-02-15T00:00:00.000Z\",\n            \"notes\": \"Birthday gift\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"69921c516de09f4b23177f89\",\n            \"userId\": \"USER001\",\n            \"title\": \"Dinner Out (Valentine's)\",\n            \"amount\": 1800,\n            \"category\": \"Food\",\n            \"date\": \"2026-02-14T00:00:00.000Z\",\n            \"notes\": \"Restaurant outing\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"69921d090bf0f9f18122eaee\",\n            \"userId\": \"USER001\",\n            \"title\": \"Gym Membership\",\n            \"amount\": 2500,\n            \"category\": \"Miscellaneous\",\n            \"date\": \"2026-02-14T00:00:00.000Z\",\n            \"notes\": \"Monthly membership fee\",\n            \"__v\": 0\n        }\n    ]\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Non-Existing Routes",
+      "item": [
+        {
+          "name": "Bad Route",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api-expence-tacker.onrender.com/user/bad-route",
+              "protocol": "https",
+              "host": [
+                "api-expence-tacker",
+                "onrender",
+                "com"
+              ],
+              "path": [
+                "user",
+                "bad-route"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Not Found Response (non-existing Route)",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "https://api-expence-tacker.onrender.com/user/bad-route",
+                  "protocol": "https",
+                  "host": [
+                    "api-expence-tacker",
+                    "onrender",
+                    "com"
+                  ],
+                  "path": [
+                    "user",
+                    "bad-route"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "41"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"29-/pGvU7ufm+QeeHl2OFs1rp+S4xU\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 16 Feb 2026 00:33:36 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"error\": \"Bad route (or) No route found\"\n}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
