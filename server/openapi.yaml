@@ -34,12 +34,6 @@ paths:
       tags:
         - Users
       summary: User Registeration
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example: ''
       parameters:
         - name: userId
           in: header
@@ -179,12 +173,6 @@ paths:
       tags:
         - Users
       summary: User Login
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example: ''
       parameters:
         - name: email
           in: header
