@@ -27,6 +27,7 @@ The API is fully documented using OpenAPI (Swagger), providing an interactive wa
 | **Mongoose**       | ODM library for MongoDB and Node.js        |
 | **JSON Web Token (JWT)** | For securing endpoints and managing sessions |
 | **dotenv**         | For managing environment variables         |
+| **Postman**       | API endpoints testing        |
 | **Swagger UI**     | For generating interactive API documentation |
 
 ## Getting Started ⚙️
@@ -152,7 +153,7 @@ The API is structured into two main routes that handles: `User` and `Transaction
 | `GET` | `/user/transactions`    | Fetches all transaction details with filtering & pagination.                    | User           |
 | `GET` | `/user/transactions/analytics`    | Fetches the analytical data.                    | User           |
 
-## API Testing – Postman Collection 🧪
+## API Testing with Postman 🧪
 
 - The repository includes a `collection.json` file exported from Postman.  
 - It contains structured test folders covering authentication, CRUD operations, protected routes, and error cases.  
